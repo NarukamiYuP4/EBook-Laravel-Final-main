@@ -7,8 +7,8 @@
  <br>
  
  
- <p>EBOOK is an Online Library web application project built using (<a href="https://getbootstrap.com/" target="_blank">Bootstrap 4.6</a>, <a href="https://laravel.com" target="_blank">Laravel 9</a>).. The main goal of this application is to provide an online library service allowing users to borrow and read books online. Users can borrow books/return books. The User can also search for particular authors to search for books. The web application has Admin user functionality which allows admins to add/edit or delete books/authors in the Database. The admin can also make a normal user admin.
- Ebook works on a User credit system. A user can buy credits for money(payment systems not integrated) and use credits to borrow and read books. A book can be borrowed for a week, the user can also extend the borrowing period of a book by 7 days and will for credits. If the user fails to return or extend a book in a given time, a late fee is charged which is 1/3rd of the credit price of the books. The advance features of the application include:
+ <p>EBOOK là một dự án ứng dụng web thư viện trực tuyến được xây dựng bằng (<a href="https://getbootstrap.com/" target="_blank">Bootstrap 4.6</a>, <a href="https://laravel.com" target="_blank">Laravel 9</a>).. Mục tiêu chính của ứng dụng này là cung cấp dịch vụ thư viện trực tuyến cho phép người dùng mượn và đọc sách trực tuyến. Người dùng có thể mượn sách/trả sách. Người dùng cũng có thể tìm kiếm tác giả cụ thể để tìm kiếm sách. Ứng dụng web có chức năng người dùng Quản trị viên cho phép quản trị viên thêm/chỉnh sửa hoặc xóa sách/tác giả trong Cơ sở dữ liệu. Quản trị viên cũng có thể biến người dùng bình thường thành quản trị viên.
+ Ebook hoạt động theo hệ thống tín dụng người dùng. Một người dùng có thể mua tín dụng bằng tiền (không tích hợp hệ thống thanh toán) và sử dụng tín dụng để mượn và đọc sách. Một cuốn sách có thể được mượn trong một tuần, người dùng cũng có thể gia hạn thời gian mượn sách thêm 7 ngày và sẽ mất tín dụng. Nếu người dùng không trả lại hoặc gia hạn sách trong thời gian quy định, phí trễ hạn sẽ được tính là 1/3 giá tín dụng của sách. Các tính năng nâng cao của ứng dụng bao gồm:
 </p>
 
 <br>
@@ -16,77 +16,75 @@
 <h1>Features</h1>
 <h2>User features</h2>
 
--   <p style="font-size:1.5rem">User/Admin functionality.Seperated logins,features and roles</p>
-      <p>Purpose: To have seperate user and admin functionalities, I have created seperate dasboards for user and admins.<p>
-      <p>Technologies: I have created a custom middleware to check for user roles, and to protect admin routes like CRUD operations on on Books and Authors<p>
--   <p style="font-size:1.5rem">User borrowing and returning books</p>
-      <p>Purpose: A particular user can borrow a book to read for a week  and then the User needs to return the book to avoid late fee charges which depend upom the Credit price of the book<p>
-      <p>Technologies: A many-to-many pivot table between a book & user, allows different users borrow same book and i have used the attach() & detach() method on the belongsToMany relationship<p>
--   <p style="font-size:1.5rem">Extending borrow period</p>
-      <p>Purpose: A particular user can extend the borrowing period of a book by a week. The user will be charged 1/4th of the total credit price of the book. If the book is overdue, the user cannot read it untill he returns and re-borrows again or extends the borrowing period. The user will be charged a late fee for returing/extending after the due date. The late fee is 1/3rd of the credit price of the book<p>
--   <p style="font-size:1.5rem">Searching for books via authors</p>
-      <p>Purpose: A particular book is written by a Author, A user can search for an author and check all the books that the author has written<p>
-      <p>Technologies: A one-to-many relationship between Book model and Author model, allows to fetch all books associated with a particular author<p>
--   <p style="font-size:1.5rem">Automated Reminder Email function</p>
-     <p>Purpose: A book when borrowed by a user has a return date, the feature sends an automated email to the users on the dealine day of the borrowing period<p>
-     <p>Technologies: Created a custom command  ExpriyReminder which checks for the return dates of all the borrowed books. Used "schedular" to define the schedule for the command and created a Mail class to send the reminder email<p>
+-   <p style="font-size:1.5rem">User/Admin functionality.</p>
+      <p>Chức năng người dùng/Quản trị viên - Để có các chức năng người dùng và quản trị viên riêng biệt, tôi đã tạo các bảng điều khiển riêng cho người dùng và quản trị viên.<p>
+      <p>Công nghệ: Tôi đã tạo một middleware tùy chỉnh để kiểm tra vai trò của người dùng và bảo vệ các tuyến đường quản trị như các thao tác CRUD trên Sách và Tác giả.<p>
+-   <p style="font-size:1.5rem">Mượn và trả sách của người dùng</p>
+      <p>- Một người dùng cụ thể có thể mượn một cuốn sách để đọc trong một tuần và sau đó người dùng cần trả lại sách để tránh phí trễ hạn.<p>
+      <p>Công nghệ: Một bảng pivot nhiều-nhiều giữa sách và người dùng, cho phép nhiều người dùng mượn cùng một cuốn sách và tôi đã sử dụng phương thức attach() và detach() trên mối quan hệ belongsToMany.<p>
+-   <p style="font-size:1.5rem">Gia hạn thời gian mượn sách</p>
+      <p>- Một người dùng cụ thể có thể gia hạn thời gian mượn sách thêm một tuần. Người dùng sẽ bị tính phí 1/4 giá tín dụng của sách. Nếu sách quá hạn, người dùng không thể đọc cho đến khi trả lại và mượn lại hoặc gia hạn thời gian mượn. Người dùng sẽ bị tính phí trễ hạn khi trả lại/gia hạn sau ngày hết hạn. Phí trễ hạn là 1/3 giá tín dụng của sách.<p>
+-   <p style="font-size:1.5rem">Tìm kiếm sách qua tác giả</p>
+      <p>Một cuốn sách cụ thể được viết bởi một tác giả. Người dùng có thể tìm kiếm tác giả và kiểm tra tất cả các cuốn sách mà tác giả đó đã viết.<p>
+      <p>Công nghệ: Một mối quan hệ một-nhiều giữa mô hình Sách và mô hình Tác giả, cho phép lấy tất cả các cuốn sách liên quan đến một tác giả cụ thể.<p>
+-   <p style="font-size:1.5rem">Chức năng gửi email nhắc nhở tự động</p>
+     <p>Một cuốn sách khi được mượn bởi người dùng có ngày trả lại, tính năng này gửi email nhắc nhở tự động cho người dùng vào ngày hết hạn thời gian mượn.<p>
+     <p>Công nghệ: Tạo một lệnh tùy chỉnh ExpriyReminder để kiểm tra ngày trả lại của tất cả các cuốn sách đã mượn. Sử dụng "schedular" để định nghĩa lịch trình cho lệnh và tạo một lớp Mail để gửi email nhắc nhở.<p>
 -   <p style="font-size:1.5rem">Google Login/Registration</p>
-     <p>Purpose: A simpler and coventional way of registring or logging in an application<p>
-     <p>Technologies: Laravel Socialite and Google Apps Api<p>
--   <p style="font-size:1.5rem">Buying credits</p>
-     <p>Purpose: This is a dummy feature as the application does not include payments integration. If implemented a user can buy credits from this page<p>
+     <p>Một cách đăng ký hoặc đăng nhập ứng dụng đơn giản và tiện lợi.<p>
+     <p>Công nghệ: Laravel Socialite và Google Apps API.<p>
 
-<h2>Admin features</h2>
 
--   <p style="font-size:1.5rem">Changing User roles</p>
-      <p>Purpose: To make a normal user into an admin.<p>
-      <p>Technologies: A makeAdmin() function on the UserController to check the role of user and update it via post request<p>
--   <p style="font-size:1.5rem">Author CRUD and adding Books to Auhor model</p>
-    <p>Purpose: Books are written by a particular author. A admin can create an Author and add new books to it. This helps the user to find the desired book easily<p>
-    <p>Technologies: Created the usuall author CRUD and also included a method to add books to it<p>
--   <p style="font-size:1.5rem">Changing the status of a Book</p>
-       <p>Purpose: An admin cannot delete a book untill its borrowed by an User. To delete a Book an admin can change its status to unavaliable and after waiting for the period, can delete the book<p>
+<h2>Tính năng Quản trị viên:</h2>
+
+-   <p style="font-size:1.5rem">Thay đổi vai trò người dùng</p>
+      <p>Biến người dùng bình thường thành quản trị viên..<p>
+      <p>Công nghệ: Một chức năng makeAdmin() trên UserController để kiểm tra vai trò của người dùng và cập nhật vai trò đó thông qua yêu cầu post.<p>
+-   <p style="font-size:1.5rem">CRUD tác giả và thêm sách vào mô hình Tác giả - Quản trị viên có thể tạo tác giả và thêm sách mới vào đó.</p>
+    <p>Purpose: Quản trị viên có thể tạo tác giả và thêm sách mới vào đó.<p>
+    <p>Công nghệ: Tạo chức năng CRUD cho tác giả và cũng bao gồm một phương thức để thêm sách vào tác giả.t<p>
+-   <p style="font-size:1.5rem">Thay đổi trạng thái của sách</p>
+       <p>Quản trị viên không thể xóa sách cho đến khi sách được người dùng mượn. Để xóa một cuốn sách, quản trị viên có thể thay đổi trạng thái của sách thành không có sẵn và sau khi chờ đợi thời gian quy định, có thể xóa sách.<p>
        <p>Technologies: An update method using a post request<p>
 -   <p style="font-size:1.5rem">Uploading Book content pdf </p>
-       <p>Purpose: An admin can upload a pdf file to a book. The pdf file is the content of the book, which can be viewed only by users borrowing the book<p>
+       <p>Công nghệ: Một phương thức update sử dụng yêu cầu post.<p>
 
 <h1>Installation</h1>
-* <p>Clone the Github repository</p>
-  <p>Inside the root folder of your local web development environment, open a new terminal window and clone the Github repository by using the command and change the directory in the newly formed project folder</p>
+* <p>Sao chép kho lưu trữ Github:</p>
+  <p>Trong thư mục gốc của môi trường phát triển web cục bộ của bạn, mở một cửa sổ terminal mới và sao chép kho lưu trữ Github bằng lệnh và thay đổi thư mục trong thư mục dự án mới tạo.</p>
   <p style="background-color:white; color:black;padding:5px; "> git clone </p>
   <br>
 
--   <p>Install Composer Dependencies</p>
+-   <p>Cài đặt các phụ thuộc Composer:</p>
     <p>Enter the Command</p>
     <br>
     <p style="background-color:white; color:black;padding:5px;"> composer install </p>
 
 <br>
 
--   <p>Install NPM Dependencies</p>
+-   <p>Cài đặt các phụ thuộc NPM:</p>
     <p>Enter the Commands: </p>
     <br>
     <p style="background-color:white; color:black;padding:5px; "> npm install <br> npm run dev </p>
 
 <br>
 
--   <p>Copy the .env file</p>
-    <p>Enter the Command: </p>
+-   <p>Sao chép tệp .env:</p>
+    <p>Tạo khóa mã hóa ứng dụng: </p>
     <br>
     <p style="background-color:white; color:black; padding:5px;"> cp .env.example .env  </p>
 
 <br>
 
--   <p>Generate an App encryption Key</p>
+-   <p>Tạo khóa mã hóa ứng dụng:</p>
     <p>Enter the Command: </p>
     <br>
     <p style="background-color:white; color:black; padding:5px;"> php artisan key:generate  </p>
 
 <br>
 
--   <p>Create an empty database for our application</p>
-    <p> Use your favorite database management tool to create an empty database.
-    Configure a username and password. </p>
+-   <p>Tạo cơ sở dữ liệu trống cho ứng dụng:</p>
+    <p> Sử dụng công cụ quản lý cơ sở dữ liệu yêu thích của bạn để tạo cơ sở dữ liệu trống và cấu hình tên người dùng và mật khẩu. </p>
     <br>
 
 *   <p>Configure the .env file</p>
@@ -96,23 +94,23 @@
     DB_DATABASE=laravel<br>
     DB_USERNAME=root<br>
     DB_PASSWORD=******** </p>
-    <p>Adjust the DB_HOST, DB_PORT, DB_DATABASE, DB_USERNAME and DB_PASSWORD according to your database</p>
+    <p>Điều chỉnh DB_HOST, DB_PORT, DB_DATABASE, DB_USERNAME và DB_PASSWORD theo cơ sở dữ liệu của bạn.</p>
 
 <br>
 
--   <p>Migrate the Database</p>
+-   <p>Di chuyển cơ sở dữ liệu:</p>
     <p style="background-color:white; color:black; padding:5px;"> php artisan migrate  </p>
     <br>
 
-*   <p>Seed the Database</p>
+*   <p>Gieo dữ liệu vào cơ sở dữ liệu:</p>
     <p style="background-color:white; color:black; padding:5px;"> php artisan db:seed </p>
     <br>
 
-*   <p>Run the scheduled tasks</p>
+*   <p>Chạy các tác vụ theo lịch trình:</p>
     <p style="background-color:white; color:black; padding:5px;"> php artisan schedule:work </p>
     <br>
 
-*   <p>Open the Application</h2>
+*   <p>Mở ứng dụng:</h2>
     <p>Open the browser and go to your url</p>
     <br>
 
@@ -120,7 +118,7 @@
 
 <h1>Usage(User)</h2>
 
-<p style="font-size:1.2rem" >I have implemented a credit system in my application. A user can borrow books for a week using his credits which can be bought. Each book has a price/credits to borrow. When the book is expired and the user wishes to read it further, a user can extend it for a week for a small credit amount. However, If a book is overdue and has passed it return date, a user cannot read it until it's extended which requires extra charges along with the regular extension price</p>
+<p style="font-size:1.2rem" >Cách sử dụng (Người dùng): Tôi đã triển khai một hệ thống tín dụng trong ứng dụng của mình. Người dùng có thể mượn sách trong một tuần bằng cách sử dụng các tín dụng đã mua. Mỗi cuốn sách có một giá/tín dụng để mượn. Khi sách hết hạn và người dùng muốn tiếp tục đọc, người dùng có thể gia hạn thêm một tuần với một lượng tín dụng nhỏ. Tuy nhiên, nếu sách quá hạn và đã qua ngày trả lại, người dùng không thể đọc cho đến khi gia hạn, điều này yêu cầu phải trả thêm phí cùng với giá gia hạn thông thường.</p>
 
 <h2>Seperated Login routes<h2>
 <p style="font-size:1.5rem">Logging in User<p>
@@ -208,22 +206,22 @@
 <h2>Automated Reminder Email Feature</h2>
 
 <h3>Description</h3>
-<p>The automated email feature is one of the most important features of this application. The Users can borrow books which they like for a certain period and then have to return the book or extend the loan period to avoid extra charges by borrowing it again. The application checks for each User borrowed books and checks for the return date of books using the getExpiryDate() method of the User model and sends an automated Reminder email to Users on deadline day </p>
+<p>Tính năng gửi email tự động là một trong những tính năng quan trọng nhất của ứng dụng này. Người dùng có thể mượn sách mà họ thích trong một khoảng thời gian nhất định, sau đó phải trả lại sách hoặc gia hạn thời gian mượn để tránh phí phụ trội bằng cách mượn lại. Ứng dụng kiểm tra các sách mà mỗi người dùng đã mượn và kiểm tra ngày trả sách bằng phương thức getExpiryDate() của mô hình người dùng và gửi email nhắc nhở tự động cho người dùng vào ngày hết hạn. </p>
 
 <h3>Why this feature?</h3>
-<p>The main motivation for the development of this feature is obvious, to reduce human effort. In a large user domain, sending a reminder email for each user is not possible for an admin, furthermore it helps the users to extend their loan period so they don’t have to borrow it again as it requires additional charges. If a user has borrowed a lot of books this feature becomes useful
+<p>Động lực chính cho việc phát triển tính năng này là hiển nhiên, để giảm bớt nỗ lực của con người. Trong một miền người dùng lớn, việc gửi email nhắc nhở cho từng người dùng là không khả thi đối với một quản trị viên, hơn nữa, nó giúp người dùng gia hạn thời gian mượn sách để họ không phải mượn lại sách, vì điều đó yêu cầu thêm phí. Nếu một người dùng đã mượn nhiều sách, tính năng này trở nên hữu ích.
 </p>
 
 </p>
 
 <h3>Development & Technologies used</h3>
 
--   Creating a custom artisan command : Using php Artisan make, I created a custom command called ExpiryReminder.In the handle() method the logic of the command goes in. The command iterates over each User's borrowed books list and compares the current date with the Return date/Expiry date of the book, if it matches the command sends an email to the borrower/user of the book.
--   getExpiryDateFunction($id): The function belongs to the User model which takes book-id as the parameter and gets the date on which the book was borrowed by the user and adds 10 days to it as the borrowing period and returns the date.
--   Settinp up the Schedular:We have to set up the command that we would like to schedule (which in this case is ExprityReminder), inside the kernel.php file of the console folder. For this command to work efficiently, it should be scheduled daily at midnight.
--   Sending an email: Created a mailable class ExpiryReminderMail.php and the relevant view also set up the senders configuration in the .env file, the email contains the book name along with the return date for the book and is triggered whenever the expiry date matches the current date.
+-   Tạo lệnh artisan tùy chỉnh: Sử dụng php Artisan make, tôi đã tạo lệnh tùy chỉnh gọi là ExpiryReminder. Trong phương thức handle(), logic của lệnh sẽ được thực hiện. Lệnh này lặp qua danh sách các sách đã mượn của từng người dùng và so sánh ngày hiện tại với Ngày trả/ngày hết hạn của sách, nếu trùng khớp, lệnh sẽ gửi email cho người mượn sách/người dùng.
+-   getExpiryDateFunction($id): Hàm này thuộc về mô hình người dùng, nhận tham số là book-id và lấy ngày mượn sách của người dùng, cộng thêm 10 ngày vào đó làm thời gian mượn và trả về ngày này.
+-   Thiết lập lịch trình: Chúng tôi cần thiết lập lệnh mà chúng tôi muốn lên lịch (trong trường hợp này là ExpiryReminder), trong tệp kernel.phpcủa thư mục console. Để lệnh này hoạt động hiệu quả, nó nên được lên lịch hàng ngày vào nửa đêm.
+-   Gửi email: Tạo một lớp mailable ExpiryReminderMail.phpvà xem liên quan, cũng thiết lập cấu hình người gửi trong tệp .env, email chứa tên sách cùng với ngày trả cho sách và được kích hoạt bất cứ khi nào ngày hết hạn trùng khớp với ngày hiện tại.
 <h3>Usage & Demonstration<h3>
-<p>I will demonstrate this feature using mailtrap.io. We have a user called Mohammad Khan and here are borrowed books.I have changed the schedular in the kernel to schedule every minute so as to demonstrate the command </p>
+<p>Tôi sẽ trình diễn tính năng này sử dụng mailtrap.io.Chúng tôi có một người dùng tên là Mohammad Khan và đây là những cuốn sách đã mượn. Tôi đã thay đổi lịch trình trong kernel để lên lịch mỗi phút để trình diễn lệnh. </p>
 
 ![My Image](/public/images/dm1.png)
 
@@ -234,57 +232,3 @@
 
 ![My Image](/public/images/dm2.png)
 
-<h3>Alternatives<h3>
-<p> One of the things I could have done differently is the method of getting the return/expiry date of a book. A model can be made for the pivot_table called for example Loaned item and return could be saved as one of the attributes of the model </p>
-<p>
-The Reminder email sends out a separate email for each book borrowed by the user, an alternative approach is if more than one book is overdue, the books could be saved in an array and a single email containing the list of books that are about to expire could be sent to the user
-
-</p>
-
-<br>
-
-<h1>Application testing</h2>
-<p>I have used feature testing to test the main fucntionality of the Application and also for route authorsiation and checks.
- The UserTest contains test for user actions except Book Crud and Author Crud, which are done in BookControllerTest and AuthorControllerTest.
- The following screenshots shows all the test that are run using:
-<p style="background-color:white; color:black; padding:5px;"> php artisan test  </p>
-
-![My Image](/public/images/tests.png)
-
-</p>
-
-</p>
-
-<h1>Refrences</h2>
-
-<p>ZeroOne. (2018, April 21). Laravel restrict users to only be able to see their own profile. Stack Overflow. Retrieved November 4, 2022, from <a href="https://stackoverflow.com/questions/49951125/laravel-restrict-users-to-only-be-able-to-see-their-own-profile">https://stackoverflow.com/questions/49951125/laravel-restrict-users-to-only-be-able-to-see-their-own-profile. </a> </p>
-
-<br>
-<p>Kingsconsult. (2020, October 12). How to implement search functionality in Laravel 8 and Laravel 7 downwards. DEV Community 👩‍💻👨‍💻.<a href="https://dev.to/kingsconsult/how-to-implement-search-functionality-in-laravel-8-and-laravel-7-downwards-3g76.">https://dev.to/kingsconsult/how-to-implement-search-functionality-in-laravel-8-and-laravel-7-downwards-3g76</a>  </p>
-
-<br>
-
-<p>Gondalez, V. (2019, May 7). Laravel PHP framework tutorial - full course for beginners (2019). YouTube. Retrieved November 4, 2022, from <p><a href="https://www.youtube.com/watch?v=ImtZ5yENzgE&amp;t=2635s">https://www.youtube.com/watch?v=ImtZ5yENzgE&amp;t=2635s</a>
-
-<br>
-
-<p>Aschmelyun, A. (2021, July 6). Laravel-job-board/databaseseeder.php at main · Aschmelyun/Laravel-job-board. GitHub. Retrieved November 4, 2022, from <a href="https://github.com/aschmelyun/laravel-job-board/blob/main/database/seeders/DatabaseSeeder.php">https://github.com/aschmelyun/laravel-job-board/blob/main/database/seeders/DatabaseSeeder.php</a>
-  </p>
-
-<br>
-<p>Chauhan, U. (2020, July 17). Bootstrap 5 sidebar user profile example. bbbootsrap. Retrieved November 4, 2022, from <a href="https://bbbootstrap.com/snippets/bootstrap-sidebar-user-profile-62301382 " >https://bbbootstrap.com/snippets/bootstrap-sidebar-user-profile-62301382 </a></p>
-
-<br>
-<p>Deyson. (n.d.). Bootstrap snippet. BS4 Search Bar. Free Bootstrap snippets and examples. Retrieved November 4, 2022, from   <a href="https://www.bootdey.com/snippets/view/bs4-search-Bar">https://www.bootdey.com/snippets/view/bs4-search-Bar </a></p>
-
-<p>YouTube. (2021, July 30). Scheduler in Laravel 8 | what is the scheduler in Laravel? | Laravel Scheduler explained. YouTube. Retrieved January 4, 2023, from <a href="https://www.youtube.com/watch?v=vZYRDRF4yF4&amp;t=543s" >https://www.youtube.com/watch?v=vZYRDRF4yF4&amp;t=543s</a></p>
-
-<p>YouTube. (2021, March 23). Laravel how to upload,view and download pdf,Docx,mp4,mp3 in Laravel Laravel tutorial from scratch. YouTube. Retrieved January 4, 2023, from  <a href= "https://www.youtube.com/watch?v=IYswY0Jgup4"> https://www.youtube.com/watch?v=IYswY0Jgup4 </a> </p>
-
-<p>TheCamboTutorial. (2022, July 23). Auth multi roles login with Custom Middleware in Laravel 9. YouTube. Retrieved January 4, 2023, from <a href ="https://www.youtube.com/watch?v=vc4sXOdE4bQ">https://www.youtube.com/watch?v=vc4sXOdE4bQ </a></p>
-
-<p>goslscsgoslscs 16711 gold badge22 silver badges99 bronze badges, RahulRahul 18.1k77 gold badges4040 silver badges5959 bronze badges, LatheesanLatheesan 22.5k3131 gold badges102102 silver badges194194 bronze badges, zlatanzlatan 3, fatemeh sadeghifatemeh sadeghi      1, Harun YilmazHarun Yilmaz 8, &amp; Mr. AMr. A 7166 bronze badges. (1966, September 1). Add Days to date in Laravel. Stack Overflow. Retrieved January 4, 2023, from <a href ="https://stackoverflow.com/questions/57692600/add-days-to-date-in-laravel#:~:text=You%20can%20add%20dates%20to,%2D%3EaddDays(%24daysToAdd)%3B ">https://stackoverflow.com/questions/57692600/add-days-to-date-in-laravel#:~:text=You%20can%20add%20dates%20to,%2D%3EaddDays(%24daysToAdd)%3B </a></p>
-
-<p>Author Upasana Chauha June, &amp; Author Anand Vunnam March. (n.d.). 32 Bootstrap Profiles. Free Frontend. Retrieved January 4, 2023, from <a href= "https://freefrontend.com/bootstrap-profiles/ ">https://freefrontend.com/bootstrap-profiles/ </a></p>
-
-<p>YouTube. (2022, February 22). Testing in laravel | full tutorial for beginners | laravel testing tutorial. YouTube. Retrieved January 4, 2023, from <a href ="https://www.youtube.com/watch?v=SmS5YcKL6Mc&amp;t=2669s"> https://www.youtube.com/watch?v=SmS5YcKL6Mc&amp;t=2669s </p>
